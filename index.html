@@ -1,0 +1,40 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background: rgb(34, 3, 119);
+        }
+        .parent{
+            display: flex;
+            justify-content: center;
+            #btn{
+                padding: 20px 40px;
+                border-radius: 20px;
+                font-size: 20px;
+                color: rgb(248, 246, 246);
+                font-style: italic;
+                font-weight: bold;
+                margin-top: 300px;
+                border-color: black;
+                background-color: black;
+            }           
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <button onclick="counter()" id="btn">Counter 0</button>
+    </div>
+<script>
+        function counter(){
+            const currentBtn = document.getElementById("btn").innerHTML;
+            const toEdit = currentBtn.split(" ")[1];
+            const new1 = parseInt(toEdit) + 1;
+            document.getElementById("btn").innerHTML = "Counter " + new1;
+        }
+    </script>
+</body>
+</html>
