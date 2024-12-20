@@ -7,7 +7,7 @@
         body{
             background: rgb(34, 3, 119);
         }
-        .parent{
+        #parent{
             display: flex;
             justify-content: center;
             #btn{
@@ -25,16 +25,29 @@
     </style>
 </head>
 <body>
-    <div class="parent">
-        <button onclick="counter()" id="btn">Counter 0</button>
+    <div id="parent">
+        
     </div>
 <script>
-        function counter(){
-            const currentBtn = document.getElementById("btn").innerHTML;
-            const toEdit = currentBtn.split(" ")[1];
-            const new1 = parseInt(toEdit) + 1;
-            document.getElementById("btn").innerHTML = "Counter " + new1;
+        let state = {
+            count: 0
         }
-    </script>
+        function onButtonPress(){
+            state.count++;
+            buttonRerender();
+        }
+        function buttonRerender(){
+            document.getElementById("parent").innerHTML = "";
+            document.getElementById("parent").appendChild(buttonComponent(state.count));
+        }
+        function buttonComponent(count){
+            const createdChild = document.createElement("button");
+            createdChild.innerHTML = `Counter ${count}`;
+            createdChild.setAttribute("onClick", 'onButtonPress()');
+            createdChild.setAttribute("id", 'btn');
+            return createdChild;
+        }
+        buttonRerender();
+</script>
 </body>
 </html>
